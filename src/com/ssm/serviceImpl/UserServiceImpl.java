@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssm.dao.UserDao;
+import com.ssm.entity.User;
 import com.ssm.service.UserService;
 
 @Service("UserService")
@@ -31,18 +32,26 @@ public class UserServiceImpl implements  UserService{
 	}
 
 	@Override
-	public String addApplyUser(String username, String password,String a) {
+	public String addApplyUser(String username, String password) {
 		Map<String, Object> map =new HashMap<String, Object>();
 		map.put("username", username);
 		map.put("password", password);
-		map.put("picture_url", a);
 		int c=userDao.addApplyUser(map);
 		if(c!= 0){
-			return "";
+			return "注册成功";
 		}else{
-			return "";
+			return "注册失败";
 		}
 
+	}
+
+	@Override
+	public int findUsername(String username) {
+		Map<String, Object> map =new HashMap<String, Object>();
+		map.put("username", username);
+		User user = userDao.findUsername(map);
+		if(user == null) return 1;
+		return 0;
 	}
 
 }

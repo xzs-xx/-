@@ -36,7 +36,9 @@ public class HandlerIntercept implements HandlerInterceptor {
 			System.out.println(username+":"+"成功");
 			return true;
 		}else{
-			System.out.println(username+":"+"不存在");
+			if(url.indexOf("findUsername.do")>=0){
+				return true;
+			}
 			request.getRequestDispatcher("/login.jsp").forward(request, arg1);
 		}
 		return false;

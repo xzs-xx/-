@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HeadController {
 	@RequestMapping("headLogin.do")
 	public String login(HttpServletResponse rep,HttpServletRequest req,HttpSession session){
-		return "head";
+		return "ChildrenHead";
 	}
 }

@@ -37,23 +37,12 @@ public class LoginController {
 	}
 	@ResponseBody
 	@RequestMapping("apply.do")
-	public String addApplyUser(String username,String password,MultipartFile items_pic) throws Exception {
-		String ori = items_pic.getOriginalFilename();//��ʼ���ļ�����
-		String pic_path="";
-		//�ϴ�ͼƬ
-		if(items_pic!=null && ori !=null && ori.length()>0){
-			pic_path = "D:\\update\\";
-			String newFilename = UUID.randomUUID()+ori.substring(ori.lastIndexOf("."));
-			//�µ�ͼƬ
-			File newfile = new File(pic_path+newFilename);
-			String a=pic_path+newFilename;
-			System.out.println(a);
-			items_pic.transferTo(newfile);
-			System.out.println(newfile);
-			return userService.addApplyUser(username,password,a);
-			
-		}else{
-			return "index";
-		}
+	public String addApplyUser(String username,String password) throws Exception {
+		return userService.addApplyUser(username,password);
+	}
+	@ResponseBody
+	@RequestMapping("findUsername.do")
+	public int findUsername(String username) {
+		return userService.findUsername(username);
 	}
 }

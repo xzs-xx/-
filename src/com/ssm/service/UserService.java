@@ -6,6 +6,7 @@ import com.ssm.entity.User;
 
 public interface UserService {
 	String findUser(String username, String password);
-	String addApplyUser(String username, String password, String a);
+	String addApplyUser(String username, String password);
+	int findUsername(String username);
 
 }
